@@ -15,7 +15,7 @@ public class NewOrderMain {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         var producer = new KafkaProducer<String, String>(properties());
 
-//        for (var i = 0; i < 100; i++ ) {
+        for (var i = 0; i < 5; i++ ) {
             // Producer message key and value
             var key = UUID.randomUUID().toString();
             var value = key + ",6565,1234";
@@ -37,7 +37,7 @@ public class NewOrderMain {
             // Class send will return a future then we need the get
             producer.send(record, callback).get();
             producer.send(emailRecord, callback).get();
-//        }
+        }
     }
 
     private static Properties properties() {
